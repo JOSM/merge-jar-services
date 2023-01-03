@@ -254,7 +254,7 @@ public final class MergeServicesTask extends Task {
 							if (!attrs.isDirectory()) {
 								file = file.getParentFile();
 							}
-							if (file.mkdirs()) {
+							if (file.mkdirs() && attrs.lastModifiedTime().toMillis() > 0) {
 								file.setLastModified(attrs.lastModifiedTime().toMillis());
 							}
 							return super.preVisitDirectory(dir, attrs);
